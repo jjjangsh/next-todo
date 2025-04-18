@@ -3,6 +3,7 @@
 import { todoService } from "@/services/todoService";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import TodoForm from "./TodoForm";
 
 const TodoList = () => {
   const {
@@ -18,6 +19,9 @@ const TodoList = () => {
   return (
     <div>
       <h1>Baro Todo List</h1>
+
+      <TodoForm />
+
       <ul>
         {todos?.map((todo) => (
           <li key={todo.id}>
