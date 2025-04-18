@@ -15,4 +15,13 @@ export const todoService = {
     });
     return res.data;
   },
+
+  async updateTodo(id: string, completed: boolean): Promise<Todo> {
+    const res = await todoApi.patch<Todo>(`/todos/${id}`, { completed });
+    return res.data;
+  },
+
+  async deleteTodo(id: string): Promise<void> {
+    await todoApi.delete(`/todos/${id}`);
+  },
 };
