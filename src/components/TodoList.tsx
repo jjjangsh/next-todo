@@ -4,6 +4,7 @@ import { todoService } from "@/services/todoService";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import TodoForm from "./TodoForm";
+import TodoItem from "./TodoItem";
 
 const TodoList = () => {
   const {
@@ -24,14 +25,7 @@ const TodoList = () => {
 
       <ul>
         {todos?.map((todo) => (
-          <li key={todo.id}>
-            <input type="checkbox" checked={todo.completed} readOnly />
-            <span
-              className={todo.completed ? "line-through text-gray-500" : ""}
-            >
-              {todo.title}
-            </span>
-          </li>
+          <TodoItem key={todo.id} todo={todo} />
         ))}
       </ul>
       {todos?.length === 0 && (
