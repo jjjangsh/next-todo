@@ -38,14 +38,14 @@ const TodoItem = ({ todo }: TodoItemProps) => {
   };
 
   return (
-    <li className="">
-      <div className="">
+    <li className="bg-white flex justify-center">
+      <div className="flex gap-2 my-1">
         <input
           type="checkbox"
           checked={todo.completed}
           onChange={handleToggle}
           disabled={updateMutation.isPending}
-          className=""
+          className="w-5"
         />
         <span
           className={`${
@@ -54,16 +54,16 @@ const TodoItem = ({ todo }: TodoItemProps) => {
         >
           {todo.title}
         </span>
+        <button
+          onClick={handleDelete}
+          disabled={deleteMutation.isPending}
+          className={`text-black hover:text-black text-sm text-center flex justify-center items-center border-2 rounded-lg px-1 ${
+            deleteMutation.isPending ? "opacity-50 cursor-not-allowed" : ""
+          }`}
+        >
+          {deleteMutation.isPending ? "처리 중" : "X"}
+        </button>
       </div>
-      <button
-        onClick={handleDelete}
-        disabled={deleteMutation.isPending}
-        className={`text-yellow-500 hover:text-red-700 ${
-          deleteMutation.isPending ? "opacity-50 cursor-not-allowed" : ""
-        }`}
-      >
-        {deleteMutation.isPending ? "처리 중" : "삭제"}
-      </button>
     </li>
   );
 };
